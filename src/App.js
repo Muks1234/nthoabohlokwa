@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import './App.css';
 
 // Simple icon components
@@ -85,6 +86,18 @@ const ChevronRight = ({ className }) => (
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    interest: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // EmailJS Configuration - Replace with your actual IDs
+  const EMAILJS_SERVICE_ID = 'service_fm9ux4v';
+  const EMAILJS_TEMPLATE_ID = 'template_t3tnhef';    // Get this from EmailJS dashboard
+  const EMAILJS_PUBLIC_KEY = 'R3WqLe3MGli-s4LLC';      // Get this from EmailJS dashboard
 
   const testimonials = [
     {
@@ -96,7 +109,7 @@ function App() {
     {
       name: "John Khoza",
       role: "Village Resident",
-      content: "No more 30km trips for basic groceries. This shopping centre is exactly what our community needed.",
+      content: "No more 30km trips for basic groceries. This shopping center is exactly what our community needed.",
       rating: 5
     },
     {
@@ -112,11 +125,63 @@ function App() {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [testimonials.length]);
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Send email via EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          interest: formData.interest || 'General Inquiry',
+          message: formData.message,
+          to_name: 'Nthoabohlokwa Shopping Center',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      alert('Thank you for your message! We will contact you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        interest: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('Email send failed:', error);
+      alert('Sorry, there was an error sending your message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,7 +196,7 @@ function App() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-800">Nthoabohlokwa</h1>
-                <p className="text-xs text-gray-600">Shopping Centre</p>
+                <p className="text-xs text-gray-600">Shopping Center</p>
               </div>
             </div>
             
@@ -276,8 +341,7 @@ function App() {
                 {[
                   "Khotso Sefoloko",
                   "Dintle Mtshazo", 
-                  "Moeletsi Moorosi",
-                  "Dlamini Mngoma"
+                  "Moeletsi Moorosi"
                 ].map((founder, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
@@ -455,7 +519,7 @@ function App() {
                   {
                     icon: <Mail className="h-6 w-6" />,
                     title: "Email",
-                    info: "info@nthoabohlokwa.co.za"
+                    info: "nthoabohlokwa.centre@gmail.com"
                   }
                 ].map((contact, index) => (
                   <div key={index} className="flex space-x-4 p-4 rounded-xl bg-white/10 backdrop-blur-sm">
@@ -478,19 +542,32 @@ function App() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Your Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your Name *"
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:border-blue-400 focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
-                    placeholder="Your Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Your Email *"
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:border-blue-400 focus:outline-none transition-colors"
                   />
                 </div>
                 <div>
-                  <select className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:border-blue-400 focus:outline-none transition-colors">
+                  <select 
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white focus:border-blue-400 focus:outline-none transition-colors"
+                  >
                     <option value="">Interested in...</option>
                     <option value="retail">Retail Space</option>
                     <option value="food">Food Court Space</option>
@@ -500,18 +577,23 @@ function App() {
                 </div>
                 <div>
                   <textarea
-                    placeholder="Your Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Your Message *"
+                    required
                     rows="4"
                     className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:border-blue-400 focus:outline-none transition-colors resize-none"
                   ></textarea>
                 </div>
                 <button
-                  onClick={() => {
-                    alert('Thank you for your interest! We will contact you soon.');
-                  }}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </div>
@@ -528,14 +610,14 @@ function App() {
                 <Building className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Nthoabohlokwa Shopping Centre</h3>
+                <h3 className="text-xl font-bold">Nthoabohlokwa Shopping Center</h3>
               </div>
             </div>
             <p className="text-gray-400 mb-8">Transforming Matatiele, one business at a time.</p>
             
             <div className="border-t border-gray-800 pt-8">
               <p className="text-gray-500">
-                © 2024 Nthoabohlokwa Shopping Centre. All rights reserved.
+                © 2024 Nthoabohlokwa Shopping Center. All rights reserved.
               </p>
             </div>
           </div>
