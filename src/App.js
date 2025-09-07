@@ -260,7 +260,7 @@ function App() {
       shops: [
         {
           icon: <img src="/astron.png" alt="Astron Garage" className="shop-logo-img" />,
-          title: "Astron Garage",
+          title: "Astron Energy",
           desc: "Fuel and convenience services for all your automotive needs"
         }
       ]
