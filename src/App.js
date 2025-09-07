@@ -259,7 +259,7 @@ function App() {
       desc: "Fuel and convenience services for all your automotive needs",
       shops: [
         {
-          icon: <img src="/astron.png" alt="Astron Energy" className="shop-logo-img" />,
+          icon: <img src="/astron.png" alt="Astron Garage" className="shop-logo-img" />,
           title: "Astron Garage",
           desc: "Fuel and convenience services for all your automotive needs"
         }
@@ -436,7 +436,7 @@ function App() {
                     phone: "+27 79 955 5027"
                   },
                   {
-                    name: "Tshepang Sefoloko",
+                    name: "WT Tshepang Sefoloko",
                     role: "Head of Security",
                     phone: "+27 63 830 2545"
                   }
@@ -600,7 +600,19 @@ function App() {
                   {
                     icon: <MapPin className="h-6 w-6" />,
                     title: "Location",
-                    info: "Matatiele, KwaZulu-Natal, South Africa"
+                    info: (
+                      <>
+                        Matatiele, KwaZulu-Natal, South Africa{' '}
+                        <a
+                          href="https://www.google.com/maps?q=-30.285186,28.781073"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-400 hover:underline"
+                        >
+                          (-30.285186, 28.781073)
+                        </a>
+                      </>
+                    )
                   },
                   {
                     icon: <Phone className="h-6 w-6" />,
