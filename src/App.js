@@ -96,8 +96,8 @@ function App() {
 
   // EmailJS Configuration - Replace with your actual IDs
   const EMAILJS_SERVICE_ID = 'service_fm9ux4v';
-  const EMAILJS_TEMPLATE_ID = 'template_t3tnhef';    // Get this from EmailJS dashboard
-  const EMAILJS_PUBLIC_KEY = 'R3WqLe3MGli-s4LLC';      // Get this from EmailJS dashboard
+  const EMAILJS_TEMPLATE_ID = 'template_t3tnhef';
+  const EMAILJS_PUBLIC_KEY = 'R3WqLe3MGli-s4LLC';
 
   const testimonials = [
     {
@@ -113,7 +113,7 @@ function App() {
       rating: 5
     },
     {
-      name: "Mary Dlamini", 
+      name: "Mary Dlamini",
       role: "Local Supplier",
       content: "Excited to partner with Nthoabohlokwa. It's great to see support for local farmers and suppliers.",
       rating: 5
@@ -336,20 +336,38 @@ function App() {
             </div>
             
             <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">Meet Our Founders</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">Meet Our Team</h3>
               <div className="space-y-4">
                 {[
-                  "Khotso Sefoloko",
-                  "Dintle Mtshazo", 
-                  "Moeletsi Moorosi"
-                ].map((founder, index) => (
+                  {
+                    name: "Yvo Khotso Sefoloko",
+                    role: "Founder (Managing Director)",
+                    phone: "+27 71 283 7213"
+                  },
+                  {
+                    name: "Refiloe Maphela",
+                    role: "Marketing Manager",
+                    phone: "+27 76 176 7125"
+                  },
+                  {
+                    name: "Dlamini Mngoma",
+                    role: "Electrical Systems Manager",
+                    phone: "+27 79 955 5027"
+                  },
+                  {
+                    name: "WT Tshepang Sefoloko",
+                    role: "Head of Security",
+                    phone: "+27 63 830 2545"
+                  }
+                ].map((member, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm">
                     <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-                      <span className="text-white font-bold">{founder.split(' ').map(n => n[0]).join('')}</span>
+                      <span className="text-white font-bold">{member.name.split(' ').map(n => n[0]).join('')}</span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-800">{founder}</h4>
-                      <p className="text-sm text-gray-600">Co-Founder</p>
+                      <h4 className="font-semibold text-gray-800">{member.name}</h4>
+                      <p className="text-sm text-gray-600">{member.role}</p>
+                      {member.phone && <p className="text-sm text-gray-600">{member.phone}</p>}
                     </div>
                   </div>
                 ))}
@@ -410,6 +428,53 @@ function App() {
                 <p className="text-gray-600 text-center">{service.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Confirmed Shops Subsection */}
+          <div className="mt-16">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+              Confirmed Shops
+            </h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: "🥬",
+                  title: "Checksave",
+                  desc: "Providing fresh vegetables, fruits, and daily essentials"
+                },
+                {
+                  icon: "🍔",
+                  title: "Pedros",
+                  desc: "Delicious fast food with a focus on flame-grilled chicken"
+                },
+                {
+                  icon: "🍗",
+                  title: "KFC",
+                  desc: "World-famous fried chicken and quick-service meals"
+                },
+                {
+                  icon: "🍕",
+                  title: "Pizza Hut",
+                  desc: "Offering a variety of pizzas and Italian-American cuisine"
+                },
+                {
+                  icon: "⛽",
+                  title: "Astron Garage",
+                  desc: "Fuel and convenience services for all your automotive needs"
+                },
+                {
+                  icon: "🏦",
+                  title: "Capitec Bank",
+                  desc: "Affordable banking services and financial solutions"
+                }
+              ].map((shop, index) => (
+                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="text-4xl mb-4 text-center">{shop.icon}</div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">{shop.title}</h3>
+                  <p className="text-gray-600 text-center">{shop.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* CTA for Business Owners */}
