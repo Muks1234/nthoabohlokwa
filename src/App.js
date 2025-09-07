@@ -96,7 +96,7 @@ function App() {
     {
       name: "John Khoza",
       role: "Village Resident",
-      content: "No more 30km trips for basic groceries. This shopping center is exactly what our community needed.",
+      content: "No more 30km trips for basic groceries. This shopping centre is exactly what our community needed.",
       rating: 5
     },
     {
@@ -131,7 +131,7 @@ function App() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-800">Nthoabohlokwa</h1>
-                <p className="text-xs text-gray-600">Shopping Center</p>
+                <p className="text-xs text-gray-600">Shopping Centre</p>
               </div>
             </div>
             
@@ -528,14 +528,14 @@ function App() {
                 <Building className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold">Nthoabohlokwa Shopping Center</h3>
+                <h3 className="text-xl font-bold">Nthoabohlokwa Shopping Centre</h3>
               </div>
             </div>
             <p className="text-gray-400 mb-8">Transforming Matatiele, one business at a time.</p>
             
             <div className="border-t border-gray-800 pt-8">
               <p className="text-gray-500">
-                © 2024 Nthoabohlokwa Shopping Center. All rights reserved.
+                © 2024 Nthoabohlokwa Shopping Centre. All rights reserved.
               </p>
             </div>
           </div>
