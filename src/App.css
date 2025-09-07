@@ -750,6 +750,20 @@ body {
   }
 }
 
+/* Expand/Collapse Styles */
+.collapsed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.expanded {
+  max-height: 500px; /* Adjust as needed for content */
+  opacity: 1;
+  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
 /* Custom Styles */
 .placeholder-gray-300::placeholder {
   color: #d1d5db;

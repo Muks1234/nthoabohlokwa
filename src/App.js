@@ -93,8 +93,9 @@ function App() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState({});
 
-  // EmailJS Configuration - Replace with your actual IDs
+  // EmailJS Configuration
   const EMAILJS_SERVICE_ID = 'service_fm9ux4v';
   const EMAILJS_TEMPLATE_ID = 'template_t3tnhef';
   const EMAILJS_PUBLIC_KEY = 'R3WqLe3MGli-s4LLC';
@@ -143,7 +144,6 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate form
     if (!formData.name || !formData.email || !formData.message) {
       alert('Please fill in all required fields');
       return;
@@ -152,7 +152,6 @@ function App() {
     setIsSubmitting(true);
 
     try {
-      // Send email via EmailJS
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -168,14 +167,12 @@ function App() {
 
       alert('Thank you for your message! We will contact you soon.');
       
-      // Reset form
       setFormData({
         name: '',
         email: '',
         interest: '',
         message: ''
       });
-
     } catch (error) {
       console.error('Email send failed:', error);
       alert('Sorry, there was an error sending your message. Please try again.');
@@ -183,6 +180,92 @@ function App() {
       setIsSubmitting(false);
     }
   };
+
+  const toggleCategory = (category) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
+
+  const services = [
+    {
+      icon: "🛍️",
+      title: "Retail Spaces",
+      desc: "Modern retail units perfect for clothing stores, electronics, and specialty shops",
+      shops: []
+    },
+    {
+      icon: "🍕",
+      title: "Food Court",
+      desc: "Fast food chains and local cuisine options in our dedicated dining area",
+      shops: [
+        {
+          icon: "🍕",
+          title: "Pizza Hut",
+          desc: "Offering a variety of pizzas and Italian-American cuisine"
+        },
+        {
+          icon: "🍔",
+          title: "Pedros",
+          desc: "Delicious fast food with a focus on flame-grilled chicken"
+        },
+        {
+          icon: "🍗",
+          title: "KFC",
+          desc: "World-famous fried chicken and quick-service meals"
+        }
+      ]
+    },
+    {
+      icon: "🥬",
+      title: "Fresh Produce",
+      desc: "CheckSave committed to providing fresh vegetables, fruits, and daily essentials",
+      shops: [
+        {
+          icon: "🥬",
+          title: "Checksave",
+          desc: "Providing fresh vegetables, fruits, and daily essentials"
+        }
+      ]
+    },
+    {
+      icon: "🏪",
+      title: "Grocery Stores",
+      desc: "Full-service supermarkets for all your household and family needs",
+      shops: []
+    },
+    {
+      icon: "🏦",
+      title: "Banking Services",
+      desc: "Future expansion to include banking facilities and financial services",
+      shops: [
+        {
+          icon: "🏦",
+          title: "Capitec Bank",
+          desc: "Affordable banking services and financial solutions"
+        }
+      ]
+    },
+    {
+      icon: "🎯",
+      title: "Entertainment",
+      desc: "Recreational facilities and entertainment venues coming soon",
+      shops: []
+    },
+    {
+      icon: "⛽",
+      title: "Garages",
+      desc: "Fuel and convenience services for all your automotive needs",
+      shops: [
+        {
+          icon: "⛽",
+          title: "Astron Garage",
+          desc: "Fuel and convenience services for all your automotive needs"
+        }
+      ]
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -220,7 +303,6 @@ function App() {
             </nav>
           </div>
 
-          {/* Mobile Menu */}
           {isMenuOpen && (
             <nav className="md:hidden mt-4 pb-4 border-t pt-4">
               {['Home', 'About', 'Services', 'Contact'].map((item) => (
@@ -271,7 +353,6 @@ function App() {
               </button>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
               {[
                 { number: "225k+", label: "People Served" },
@@ -355,9 +436,9 @@ function App() {
                     phone: "+27 79 955 5027"
                   },
                   {
-                    name: "WT Tshepang Sefoloko",
+                    name: "Tshepang Sefoloko",
                     role: "Head of Security",
-                    phone: "+27 63 830 2545"
+                    phone: ""
                   }
                 ].map((member, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm">
@@ -390,94 +471,42 @@ function App() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "🛍️",
-                title: "Retail Spaces",
-                desc: "Modern retail units perfect for clothing stores, electronics, and specialty shops"
-              },
-              {
-                icon: "🍕",
-                title: "Food Court",
-                desc: "Fast food chains and local cuisine options in our dedicated dining area"
-              },
-              {
-                icon: "🥬",
-                title: "Fresh Produce",
-                desc: "CheckSave committed to providing fresh vegetables, fruits, and daily essentials"
-              },
-              {
-                icon: "🏪",
-                title: "Grocery Stores",
-                desc: "Full-service supermarkets for all your household and family needs"
-              },
-              {
-                icon: "🏦",
-                title: "Banking Services",
-                desc: "Future expansion to include banking facilities and financial services"
-              },
-              {
-                icon: "🎯",
-                title: "Entertainment",
-                desc: "Recreational facilities and entertainment venues coming soon"
-              }
-            ].map((service, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-4xl mb-4 text-center">{service.icon}</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">{service.title}</h3>
-                <p className="text-gray-600 text-center">{service.desc}</p>
+            {services.map((service, index) => (
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <button
+                  onClick={() => toggleCategory(service.title)}
+                  className="w-full flex items-center justify-between text-left"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="text-4xl">{service.icon}</div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{service.title}</h3>
+                      <p className="text-gray-600">{service.desc}</p>
+                    </div>
+                  </div>
+                  {service.shops.length > 0 && (
+                    <ArrowRight className={`h-5 w-5 text-gray-600 transform transition-transform duration-300 ${expandedCategories[service.title] ? 'rotate-90' : ''}`} />
+                  )}
+                </button>
+                {service.shops.length > 0 && (
+                  <div className={`mt-4 space-y-4 ${expandedCategories[service.title] ? 'expanded' : 'collapsed'}`}>
+                    {service.shops.map((shop, shopIndex) => (
+                      <div key={shopIndex} className="bg-gray-50 rounded-xl p-4">
+                        <div className="flex items-center space-x-4">
+                          <div className="text-2xl">{shop.icon}</div>
+                          <div>
+                            <h4 className="font-semibold text-gray-800">{shop.title}</h4>
+                            <p className="text-gray-600 text-sm">{shop.desc}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Confirmed Shops Subsection */}
-          <div className="mt-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
-              Confirmed Shops
-            </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: "🥬",
-                  title: "Checksave",
-                  desc: "Providing fresh vegetables, fruits, and daily essentials"
-                },
-                {
-                  icon: "🍔",
-                  title: "Pedros",
-                  desc: "Delicious fast food with a focus on flame-grilled chicken"
-                },
-                {
-                  icon: "🍗",
-                  title: "KFC",
-                  desc: "World-famous fried chicken and quick-service meals"
-                },
-                {
-                  icon: "🍕",
-                  title: "Pizza Hut",
-                  desc: "Offering a variety of pizzas and Italian-American cuisine"
-                },
-                {
-                  icon: "⛽",
-                  title: "Astron Garage",
-                  desc: "Fuel and convenience services for all your automotive needs"
-                },
-                {
-                  icon: "🏦",
-                  title: "Capitec Bank",
-                  desc: "Affordable banking services and financial solutions"
-                }
-              ].map((shop, index) => (
-                <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="text-4xl mb-4 text-center">{shop.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">{shop.title}</h3>
-                  <p className="text-gray-600 text-center">{shop.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA for Business Owners */}
           <div className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-center text-white">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Start Your Business?</h3>
             <p className="text-lg mb-8 opacity-90">
@@ -520,7 +549,6 @@ function App() {
                 </div>
               </div>
 
-              {/* Navigation */}
               <div className="flex justify-center space-x-4 mt-8">
                 <button
                   onClick={() => setCurrentTestimonial((prev) => prev === 0 ? testimonials.length - 1 : prev - 1)}
@@ -536,7 +564,6 @@ function App() {
                 </button>
               </div>
 
-              {/* Dots */}
               <div className="flex justify-center space-x-2 mt-4">
                 {testimonials.map((_, index) => (
                   <button
@@ -566,7 +593,6 @@ function App() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Info */}
             <div>
               <h3 className="text-2xl font-bold mb-8">Get in Touch</h3>
               <div className="space-y-6">
@@ -600,7 +626,6 @@ function App() {
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
               <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
               <div className="space-y-6">
