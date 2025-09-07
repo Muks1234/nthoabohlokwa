@@ -423,22 +423,26 @@ function App() {
                   {
                     name: "Yvo Khotso Sefoloko",
                     role: "Founder (Managing Director)",
-                    phone: "+27 71 283 7213"
+                    phone: "+27712837213",
+                    displayPhone: "+27 71 283 7213"
                   },
                   {
                     name: "Refiloe Maphela",
                     role: "Marketing Manager",
-                    phone: "+27 76 176 7125"
+                    phone: "+27761767125",
+                    displayPhone: "+27 76 176 7125"
                   },
                   {
                     name: "Dlamini Mngoma",
                     role: "Electrical Systems Manager",
-                    phone: "+27 79 955 5027"
+                    phone: "+27799555027",
+                    displayPhone: "+27 79 955 5027"
                   },
                   {
                     name: "WT Tshepang Sefoloko",
                     role: "Head of Security",
-                    phone: "+27 63 830 2545"
+                    phone: "+27638302545",
+                    displayPhone: "+27 63 830 2545"
                   }
                 ].map((member, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm">
@@ -448,7 +452,32 @@ function App() {
                     <div>
                       <h4 className="font-semibold text-gray-800">{member.name}</h4>
                       <p className="text-sm text-gray-600">{member.role}</p>
-                      {member.phone && <p className="text-sm text-gray-600">{member.phone}</p>}
+                     {member.phone && (
+  <>
+    {/* Show "Phone" link only on screens smaller than sm */}
+    <p className="text-sm text-gray-600 sm:hidden">
+      <a
+        href={`tel:${member.phone}`}
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:underline"
+      >
+        Phone
+      </a>
+    </p>
+
+    {/* Show the actual phone number starting at sm and up */}
+    <p className="text-sm text-gray-600 hidden sm:block">
+      <a
+        href={`tel:${member.phone}`}
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        {member.displayPhone}
+      </a>
+    </p>
+  </>
+)}
+
                     </div>
                   </div>
                 ))}
