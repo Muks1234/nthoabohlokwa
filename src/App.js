@@ -438,7 +438,7 @@ function App() {
                   {
                     name: "Tshepang Sefoloko",
                     role: "Head of Security",
-                    phone: ""
+                    phone: "+27 63 830 2545"
                   }
                 ].map((member, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm">
