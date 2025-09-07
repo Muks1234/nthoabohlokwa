@@ -201,17 +201,17 @@ function App() {
       desc: "Fast food chains and local cuisine options in our dedicated dining area",
       shops: [
         {
-          icon: "🍕",
+          icon: <img src="/pizza_hut.png" alt="Pizza Hut" className="shop-logo-img" />,
           title: "Pizza Hut",
           desc: "Offering a variety of pizzas and Italian-American cuisine"
         },
         {
-          icon: "🍔",
+          icon: <img src="/pedros.png" alt="Pedros" className="shop-logo-img" />,
           title: "Pedros",
           desc: "Delicious fast food with a focus on flame-grilled chicken"
         },
         {
-          icon: "🍗",
+          icon: <img src="/kfc.png" alt="KFC" className="shop-logo-img" />,
           title: "KFC",
           desc: "World-famous fried chicken and quick-service meals"
         }
@@ -223,7 +223,7 @@ function App() {
       desc: "CheckSave committed to providing fresh vegetables, fruits, and daily essentials",
       shops: [
         {
-          icon: "🥬",
+          icon: <img src="/checksave.png" alt="Checksave" className="shop-logo-img" />,
           title: "Checksave",
           desc: "Providing fresh vegetables, fruits, and daily essentials"
         }
@@ -241,7 +241,7 @@ function App() {
       desc: "Future expansion to include banking facilities and financial services",
       shops: [
         {
-          icon: "🏦",
+          icon: <img src="/capitec.png" alt="Capitec Bank" className="shop-logo-img" />,
           title: "Capitec Bank",
           desc: "Affordable banking services and financial solutions"
         }
@@ -259,7 +259,7 @@ function App() {
       desc: "Fuel and convenience services for all your automotive needs",
       shops: [
         {
-          icon: "⛽",
+          icon: <img src="/astron.png" alt="Astron Energy" className="shop-logo-img" />,
           title: "Astron Garage",
           desc: "Fuel and convenience services for all your automotive needs"
         }
@@ -493,7 +493,7 @@ function App() {
                     {service.shops.map((shop, shopIndex) => (
                       <div key={shopIndex} className="bg-gray-50 rounded-xl p-4">
                         <div className="flex items-center space-x-4">
-                          <div className="text-2xl">{shop.icon}</div>
+                          <div>{shop.icon}</div>
                           <div>
                             <h4 className="font-semibold text-gray-800">{shop.title}</h4>
                             <p className="text-gray-600 text-sm">{shop.desc}</p>
