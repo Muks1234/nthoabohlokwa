@@ -443,6 +443,12 @@ function App() {
                     role: "Head of Security",
                     phone: "+27638302545",
                     displayPhone: "+27 63 830 2545"
+                  },
+                  {
+                    name: "Herbert Sefoloko",
+                    role: "Exhibition Coordinator & Leasing",
+                    phone: "+27625869658",
+                    displayPhone: "+27 62 586 9658"
                   }
                 ].map((member, index) => (
                   <div key={index} className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm">
