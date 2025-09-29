@@ -378,7 +378,7 @@ function App() {
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We're bridging the gap in accessibility to essential services, creating a thriving commercial hub 
-              that serves over 225,000 residents across 20+ villages around Sibi.
+              that serves over 225,000 residents across 20+ villages around Kgoapha.
             </p>
           </div>
 
