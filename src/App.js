@@ -274,9 +274,7 @@ function App() {
         <div className="container mx-auto px-4 py-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Building className="h-6 w-6 text-white" />
-              </div>
+              <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-10 h-10 rounded-lg" />
               <div>
                 <h1 className="text-xl font-bold text-gray-800">Nthoabohlokwa</h1>
                 <p className="text-xs text-gray-600">Shopping Center</p>
@@ -458,32 +456,31 @@ function App() {
                     <div>
                       <h4 className="font-semibold text-gray-800">{member.name}</h4>
                       <p className="text-sm text-gray-600">{member.role}</p>
-                     {member.phone && (
-  <>
-    {/* Show "Phone" link only on screens smaller than sm */}
-    <p className="text-sm text-gray-600 sm:hidden">
-      <a
-        href={`tel:${member.phone}`}
-        rel="noopener noreferrer"
-        className="text-blue-400 hover:underline"
-      >
-        Phone
-      </a>
-    </p>
+                      {member.phone && (
+                        <>
+                          {/* Show "Phone" link only on screens smaller than sm */}
+                          <p className="text-sm text-gray-600 sm:hidden">
+                            <a
+                              href={`tel:${member.phone}`}
+                              rel="noopener noreferrer"
+                              className="text-blue-400 hover:underline"
+                            >
+                              Phone
+                            </a>
+                          </p>
 
-    {/* Show the actual phone number starting at sm and up */}
-    <p className="text-sm text-gray-600 hidden sm:block">
-      <a
-        href={`tel:${member.phone}`}
-        rel="noopener noreferrer"
-        className="hover:underline"
-      >
-        {member.displayPhone}
-      </a>
-    </p>
-  </>
-)}
-
+                          {/* Show the actual phone number starting at sm and up */}
+                          <p className="text-sm text-gray-600 hidden sm:block">
+                            <a
+                              href={`tel:${member.phone}`}
+                              rel="noopener noreferrer"
+                              className="hover:underline"
+                            >
+                              {member.displayPhone}
+                            </a>
+                          </p>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -743,9 +740,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Building className="h-6 w-6 text-white" />
-              </div>
+              <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-10 h-10 rounded-lg" />
               <div>
                 <h3 className="text-xl font-bold">Nthoabohlokwa Shopping Center</h3>
               </div>
