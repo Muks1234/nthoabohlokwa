@@ -322,7 +322,7 @@ function App() {
         <div className="container mx-auto px-4 py-12">
           <div className="text-center max-w-4xl mx-auto">
         <div className="animate-float mb-8">
-  <div className="relative w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 p-2.5 transform hover:scale-110 transition-all duration-300 overflow-hidden">
+  <div className="relative w-full max-w-[320px] aspect-square rounded-xl flex items-center justify-center mx-auto mb-4 p-2.5 transform hover:scale-110 transition-all duration-300 overflow-hidden">
     {/* Gradient background that matches your page background */}
     <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-xl"></div>
     
