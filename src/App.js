@@ -322,11 +322,10 @@ function App() {
         <div className="container mx-auto px-4 py-12">
           <div className="text-center max-w-4xl mx-auto">
             <div className="animate-float mb-8">
-              <div className="w-24 h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-2xl p-3 transform hover:scale-105 transition-transform duration-300">
-                <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-full h-full object-contain" />
-              </div>
-            </div> 
-            <span></span>
+  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl border-2 border-blue-300/40 flex items-center justify-center mx-auto mb-4 shadow-lg p-2.5 transform hover:scale-110 transition-all duration-300">
+    <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-full h-full object-contain" />
+  </div>
+</div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
               Welcome to <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Nthoabohlokwa</span>
