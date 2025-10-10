@@ -322,7 +322,7 @@ function App() {
         <div className="container mx-auto px-4 py-12">
           <div className="text-center max-w-4xl mx-auto">
             <div className="animate-float mb-8">
-  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl border-2 border-blue-300/40 flex items-center justify-center mx-auto mb-4 shadow-lg p-2.5 transform hover:scale-110 transition-all duration-300">
+  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg p-2.5 transform hover:scale-110 transition-all duration-300" style={{boxShadow: '0 0 0 1px rgba(96, 165, 250, 0.15), 0 0 20px rgba(59, 130, 246, 0.2), 0 10px 25px -5px rgba(59, 130, 246, 0.25)'}}>
     <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-full h-full object-contain" />
   </div>
 </div>
