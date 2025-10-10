@@ -326,8 +326,8 @@ function App() {
     className="relative rounded-xl flex items-center justify-center mx-auto mb-4 p-2.5 transform hover:scale-110 transition-all duration-300 overflow-hidden"
     style={{
       width: '100%',
-      maxWidth: '320px',
-      height: '320px',
+      maxWidth: '324px',
+      height: '324px',
       aspectRatio: '1 / 1'
     }}
   >
