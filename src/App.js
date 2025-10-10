@@ -326,9 +326,9 @@ function App() {
     className="relative rounded-xl flex items-center justify-center mx-auto mb-4 p-2.5 transform hover:scale-110 transition-all duration-300 overflow-hidden"
     style={{
       width: '100%',
-      maxWidth: '324px',
-      height: '324px',
-      aspectRatio: '1 / 1'
+      maxWidth: '327px',
+      height: '327px',
+      //aspectRatio: '1 / 1'
     }}
   >
     {/* Gradient background that matches your page background */}
