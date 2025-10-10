@@ -321,9 +321,9 @@ function App() {
       <section id="home" className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen flex items-center">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="animate-bounce mb-8">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl">
-                <ShoppingBag className="h-10 w-10 text-white" />
+            <div className="animate-float mb-8">
+              <div className="w-24 h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-2xl p-3 transform hover:scale-105 transition-transform duration-300">
+                <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-full h-full object-contain" />
               </div>
             </div>
             
