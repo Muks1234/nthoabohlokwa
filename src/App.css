@@ -825,3 +825,31 @@ html {
     line-height: 2.25rem;
   }
 }
+
+.logo-container {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+/* Fallback for browsers that don't support aspect-ratio */
+.logo-container::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+@supports (aspect-ratio: 1 / 1) {
+  .logo-container::before {
+    display: none;
+  }
+}
+
+/* For smaller screens, make it responsive */
+@media (max-width: 320px) {
+  .logo-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
