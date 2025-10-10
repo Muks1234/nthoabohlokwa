@@ -327,7 +327,7 @@ function App() {
     style={{
       width: '100%',
       maxWidth: '327px',
-      height: '350px',
+      height: '355px',
       //aspectRatio: '1 / 1'
     }}
   >
