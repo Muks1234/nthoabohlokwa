@@ -321,9 +321,21 @@ function App() {
       <section id="home" className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen flex items-center">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="animate-float mb-8">
-  <div className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 p-2.5 transform hover:scale-110 transition-all duration-300" style={{background: 'linear-gradient(to bottom right, rgba(59, 130, 246, 0), rgba(99, 102, 241, 0))'}}>
-    <img src="/kgotso_logo.svg" alt="Kgotso Logo" className="w-full h-full object-contain" />
+        <div className="animate-float mb-8">
+  <div className="relative w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 p-2.5 transform hover:scale-110 transition-all duration-300 overflow-hidden">
+    {/* Gradient background that matches your page background */}
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-xl"></div>
+    
+    {/* Subtle border with gradient */}
+    <div className="absolute inset-0 rounded-xl border border-white/20"></div>
+    
+    {/* Logo with blend mode */}
+    <img 
+      src="/kgotso_logo.svg" 
+      alt="Kgotso Logo" 
+      className="w-full h-full object-contain relative z-10" 
+      style={{mixBlendMode: 'multiply', opacity: 0.95}}
+    />
   </div>
 </div>
             
